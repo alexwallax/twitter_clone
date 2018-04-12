@@ -6,11 +6,11 @@
 		<title>Twitter clone</title>
 
 		<!-- jquery - link cdn -->
-	<!--	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>  -->
-                <script src="js/jquery.js"></script> 
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>  
+        <!--        <script src="js/jquery.js"></script>  -->
 		<!-- bootstrap - link cdn -->
-	<!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  -->
-         <link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  
+   <!--      <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 		<script>
 			// código javascript						
 		</script>
@@ -38,9 +38,9 @@
 	            	<a id="entrar" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entrar</a>
 					<ul class="dropdown-menu" aria-labelledby="entrar">
 						<div class="col-md-12">
-				    		<p>Você possui uma conta?</h3>
+				    		<p>Você possui uma conta?</p>
 				    		<br />
-							<form method="post" action="" id="formLogin">
+							<form method="post" action="validar_acesso.php" id="formLogin">
 								<div class="form-group">
 									<input type="text" class="form-control" id="campo_usuario" name="usuario" placeholder="Usuário" />
 								</div>
@@ -62,7 +62,6 @@
 	      </div>
 	    </nav>
 
-
 	    <div class="container">
 
 	      <!-- Main component for a primary marketing message or call to action -->
@@ -74,11 +73,10 @@
 	      <div class="clearfix"></div>
 		</div>
 
-
 	    </div>
 	
-	<!--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
 	        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
+<!--        <script src="js/bootstrap.min.js"></script> -->
 	</body>
 </html>
