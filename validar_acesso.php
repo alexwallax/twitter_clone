@@ -5,7 +5,7 @@ session_start();
 require_once('db.class.php');
 
 $usuario = $_POST['usuario'];
-$senha = $_POST['senha'];
+md5($senha = $_POST['senha']);
 //podemos recuperar apenas usuario e email poe ex - select usu_usuario, usu_email from ...
 $sql = "SELECT * FROM TB_USUARIOS WHERE USU_USUARIO = '$usuario' AND USU_SENHA = '$senha' ";
 
