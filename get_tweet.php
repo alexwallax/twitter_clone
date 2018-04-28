@@ -1,27 +1,24 @@
 <?php
-
-    session_start();
     
+    session_start();
+
     //verificar se essa variavel USU_USUARIO "NÂO" existe se nao exisir encamionha par o index
     if (!isset($_SESSION['USU_USUARIO'])) {
     header('Location: index.php?erro=1');
     }
+
+    require_once('db.class.php');    
     
-    require_once('db.class.php');
-    
-    $texto_tweet = $_POST['texto_tweet'];
     $id_usuario = $_SESSION['id_usuario'];
     
-    if($texto_tweet == '' || $id_usuario == '') {
-        die();
-    }
-
     $objDb = new db();
     $link = $objDb->conecta_mysql();
 
-    $sql = " INSERT INTO tweet(id_usuario, tweet)values($id_usuario, '$texto_tweet') "; 
+    $sql = " SELECT * FROM tweet ORDER BY data_inclusao DESC "; 
 
-    mysqli_query($link, $sql);
-
+    echo $sql;
+    
+    //mysqli_query($link, $sql);
+    
 ?>
 

@@ -7,7 +7,7 @@ require_once('db.class.php');
 $usuario = $_POST['usuario'];
 md5($senha = $_POST['senha']);
 //podemos recuperar apenas usuario e email poe ex - select usu_usuario, usu_email from ...
-$sql = "SELECT * FROM TB_USUARIOS WHERE USU_USUARIO = '$usuario' AND USU_SENHA = '$senha' ";
+$sql = "SELECT USU_ID, USU_USUARIO, USU_EMAIL FROM TB_USUARIOS WHERE USU_USUARIO = '$usuario' AND USU_SENHA = '$senha' ";
 
 $objDb = new db(); //instacia da classe 
 $link = $objDb->conecta_mysql(); // execução do mysql
@@ -20,6 +20,7 @@ if ($resultado_id) {
 
     if (isset($dados_usuario['USU_USUARIO'])) {
         
+        $_SESSION['id_usuario'] = $dados_usuario['USU_ID'];
         $_SESSION['USU_USUARIO'] = $dados_usuario['USU_USUARIO'];
         $_SESSION['USU_EMAIL'] = $dados_usuario['USU_EMAIL'];
         
