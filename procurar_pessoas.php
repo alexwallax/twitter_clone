@@ -37,7 +37,7 @@ if (!isset($_SESSION['USU_USUARIO'])) {
                             method: 'post',
                             data: $('#form_procurar_pessoas').serialize(),
                             success: function (data) {
-                                alert(data);
+                                $('#pessoas').html(data);
                             }
                         });
                     }
@@ -105,7 +105,7 @@ if (!isset($_SESSION['USU_USUARIO'])) {
                     </div>
                 </div>
                 
-                <div id="tweets" class="list-group"></div>
+                <div id="pessoas" class="list-group"></div>
                 
             </div>
             <div class="col-md-3">
