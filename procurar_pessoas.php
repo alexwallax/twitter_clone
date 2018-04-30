@@ -1,13 +1,64 @@
-
-
-
 <?php
-session_start();
 
-//verificar se essa variavel USU_USUARIO "NÂO" existe se nao exisir encamionha par o index
-if (!isset($_SESSION['USU_USUARIO'])) {
+    session_start();
+
+    //verificar se essa variavel USU_USUARIO "NÂO" existe se nao exisir encamionha par o index
+    if (!isset($_SESSION['USU_USUARIO'])) {
     header('Location: index.php?erro=1');
-}
+    }
+    
+    
+    //recuperar a classe de conexão com o banco de dados
+    require_once('db.class.php'); 
+    
+    //instancia da classe de conexão
+    $objDb = new db();
+    $link = $objDb->conecta_mysql();
+
+    $id_usuario = $_SESSION['id_usuario'];    
+    
+    
+    // quantidade de tweets
+    $sql = " SELECT COUNT(*) AS qtde_tweets FROM tweet WHERE id_usuario = $id_usuario ";
+
+    //execução da query
+    $resultado_id = mysqli_query($link, $sql);
+    
+    $qtde_tweets = 0;
+    
+    // o if vai testar para verificar se ha de fato um recurso... 
+    // externo(se a execução da queru=y foi feita com sucesso)
+    if($resultado_id) {
+        $registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC);
+        
+        $qtde_tweets = $registro['qtde_tweets'];
+        
+    } else {
+        echo "Erro na execução da query";
+    }
+
+    
+    
+    
+    // quantidade de seguidores
+    $sql = " SELECT COUNT(*) AS qtde_seguidores FROM usuarios_seguidores WHERE seguindo_id_usuario = $id_usuario ";
+
+    //execução da query
+    $resultado_id = mysqli_query($link, $sql);
+    
+    $qtde_seguidores = 0;
+    
+    // o if vai testar para verificar se ha de fato um recurso... 
+    // externo(se a execução da queru=y foi feita com sucesso)
+    if($resultado_id) {
+        $registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC);
+        
+        $qtde_seguidores = $registro['qtde_seguidores'];
+        
+    } else {
+        echo "Erro na execução da query";
+    }
+    
 ?>
 
 <!DOCTYPE HTML>
@@ -120,10 +171,10 @@ if (!isset($_SESSION['USU_USUARIO'])) {
                         
                         <hr /> 
                         <div class="col-md-6">
-                            TWEETS <br /> 1
+                            TWEETS <br /> <?= $qtde_tweets?>
                         </div>
                         <div class="col-md-6">
-                            SEGUIDORES <br /> 1
+                            SEGUIDORES <br /> <?= $qtde_seguidores?>
                         </div>
                     </div> 
                 </div>

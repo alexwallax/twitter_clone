@@ -20,7 +20,8 @@
     $sql.= " LEFT JOIN usuarios_seguidores AS us"; 
     $sql.= " ON (us.id_usuario = $id_usuario AND u.USU_ID = us.seguindo_id_usuario)";
     $sql.= " WHERE u.USU_USUARIO like '%$nome_pessoa%' AND u.USU_ID <> $id_usuario "; 
-     
+    
+    //execução da query
     $resultado_id = mysqli_query($link, $sql);
     
     if($resultado_id) {
